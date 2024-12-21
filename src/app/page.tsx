@@ -22,7 +22,7 @@ export default function Home() {
 
       const data = await response.json();
 
-      if (!data.sucess) {
+      if (!data.success) {
         throw new Error(data.error || "Failed to generate image");
       }
 
@@ -47,7 +47,17 @@ export default function Home() {
     // TODO: Update the UI here to show the images generated
 
     <div className="min-h-screen flex flex-col justify-between p-8">
-      <main className="flex-1">{/* Main content can go here */}</main>
+      <main className="flex-1 flex flex-col items-center gap-8">
+        {imageUrl && (
+          <div className="w-full max-w-2xl rounded-lg overflow-hidden shadow-lg">
+            <img
+              src={imageUrl}
+              alt="Generated artwork"
+              className="w-full h-auto"
+            />
+          </div>
+        )}
+      </main>
 
       <footer className="w-full max-w-3xl mx-auto">
         <form onSubmit={handleSubmit} className="w-full">
